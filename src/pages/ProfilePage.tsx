@@ -59,7 +59,7 @@ export default function ProfilePage() {
             {[
               { label: 'Flights', value: totalFlights, icon: <Plane size={18} /> },
               { label: 'Countries', value: 14, icon: <TrendingUp size={18} /> },
-              { label: 'Spent', value: `$${totalSpent.toLocaleString()}`, icon: <CreditCard size={18} /> },
+              { label: 'Spent', value: `Rp. ${totalSpent.toLocaleString('id-ID')}`, icon: <CreditCard size={18} /> },
             ].map(stat => (
               <div key={stat.label} style={{ textAlign: 'center', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, padding: '14px 20px', minWidth: 90 }}>
                 <div style={{ color: 'var(--accent-lime)', marginBottom: 6 }}>{stat.icon}</div>

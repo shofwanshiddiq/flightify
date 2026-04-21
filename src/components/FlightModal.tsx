@@ -33,6 +33,8 @@ export default function FlightModal({ flight, onClose, onAddToBasket }: Props) {
     );
   };
 
+  const formatRupiah = (val: number) => `Rp. ${val.toLocaleString('id-ID')}`;
+
   const handleAdd = () => {
     if (selectedSeats.length === 0) return;
     onAddToBasket({ flight, passengers, class: flightClass, seats: selectedSeats });
@@ -94,9 +96,9 @@ export default function FlightModal({ flight, onClose, onAddToBasket }: Props) {
           <div>
             <label style={{ display: 'block', color: 'var(--text-muted)', fontSize: 12, marginBottom: 6 }}>Class</label>
             <select className="input" value={flightClass} onChange={e => setFlightClass(e.target.value as 'economy'|'business'|'first')}>
-              <option value="economy">Economy (${flight.price})</option>
-              <option value="business">Business (${Math.round(flight.price*2.5)})</option>
-              <option value="first">First Class (${Math.round(flight.price*4)})</option>
+              <option value="economy">Economy ({formatRupiah(flight.price)})</option>
+              <option value="business">Business ({formatRupiah(Math.round(flight.price * 2.5))})</option>
+              <option value="first">First Class ({formatRupiah(Math.round(flight.price * 4))})</option>
             </select>
           </div>
         </div>
@@ -152,7 +154,7 @@ export default function FlightModal({ flight, onClose, onAddToBasket }: Props) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid var(--border)' }}>
           <div>
             <div style={{ color: 'var(--text-muted)', fontSize: 12 }}>Total price</div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 28, color: 'var(--accent-lime)' }}>${total.toLocaleString()}</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 28, color: 'var(--accent-lime)' }}>Rp. {total.toLocaleString('id-ID')}</div>
           </div>
           <button
             className="btn btn-primary"

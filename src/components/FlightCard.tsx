@@ -45,7 +45,7 @@ export default function FlightCard({ flight, onBook, onDetail, compact }: Props)
             </div>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 16, color: 'var(--accent-lime)' }}>${flight.price}</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 16, color: 'var(--accent-lime)' }}>Rp. {flight.price.toLocaleString('id-ID')}</div>
             <div style={{ fontSize: 11, color: statusColor, fontWeight: 600 }}>{flight.status.replace('-', ' ').toUpperCase()}</div>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function FlightCard({ flight, onBook, onDetail, compact }: Props)
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div>
             <div style={{ fontSize: 11, color: 'var(--text-muted)', textAlign: 'right' }}>from</div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'var(--accent-lime)' }}>${flight.price}</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'var(--accent-lime)' }}>Rp. {flight.price.toLocaleString('id-ID')}</div>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button className="btn btn-ghost" style={{ padding: '8px 14px', fontSize: 12 }} onClick={() => onDetail?.(flight)}>Details</button>

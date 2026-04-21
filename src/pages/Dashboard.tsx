@@ -3,6 +3,7 @@ import { FLIGHTS, WORLD_CITIES } from '../data/flights';
 import { useApp } from '../hooks/useApp';
 import WorldMap from '../components/WorldMap';
 import WorldClock from '../components/WorldClock';
+import AnalogClock from '../components/AnalogClock';
 import FlightCard from '../components/FlightCard';
 import FlightModal from '../components/FlightModal';
 import { Flight } from '../types';
@@ -51,21 +52,40 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* Analog Clock */}
+      <div className="card" style={{ padding: '20px 18px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 20, alignItems: 'center', justifyContent: 'center' }}>
+          <AnalogClock timezone={-5} cityName="New York" />
+          <AnalogClock timezone={0} cityName="London" />
+          <AnalogClock timezone={4} cityName="Dubai" />
+          <AnalogClock timezone={7} cityName="Jakarta" />
+          <AnalogClock timezone={9} cityName="Tokyo" />
+          <AnalogClock timezone={1} cityName="Paris" />
+        </div>
+      </div>
+
       {/* Stats row */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
         {[
-          { label: 'Total Bookings', value: bookings.length, icon: <Calendar size={18} />, color: 'var(--accent-cyan)' },
-          { label: 'Flights Today', value: FLIGHTS.filter(f => f.status !== 'landed').length, icon: <Plane size={18} />, color: 'var(--accent-lime)' },
-          { label: 'In-Flight Now', value: IN_FLIGHT.filter(f=>f.status==='in-flight').length, icon: <TrendingUp size={18} />, color: 'var(--accent-blue)' },
-          { label: 'Total Spent', value: `$${bookings.reduce((a, b) => a + b.totalPrice, 0).toLocaleString()}`, icon: <TrendingUp size={18} />, color: 'var(--accent-orange)' },
+          { label: 'Total Bookings', value: bookings.length, icon: <Calendar size={48} />, color: 'var(--accent-cyan)' },
+          { label: 'Flights Today', value: FLIGHTS.filter(f => f.status !== 'landed').length, icon: <Plane size={48} />, color: 'var(--accent-lime)' },
+          { label: 'In-Flight Now', value: IN_FLIGHT.filter(f=>f.status==='in-flight').length, icon: <TrendingUp size={48} />, color: 'var(--accent-blue)' },
+          { label: 'Total Spent', value: `Rp. ${bookings.reduce((a, b) => a + b.totalPrice, 0).toLocaleString('id-ID')}`, icon: <TrendingUp size={48} />, color: 'var(--accent-orange)' },
         ].map(stat => (
           <div key={stat.label} className="card" style={{ padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{ width: 40, height: 40, borderRadius: 10, background: `${stat.color}18`, border: `1px solid ${stat.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: stat.color }}>
               {stat.icon}
             </div>
             <div>
-              <div style={{ color: 'var(--text-muted)', fontSize: 11, fontWeight: 600, letterSpacing: '0.05em' }}>{stat.label.toUpperCase()}</div>
-              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22 }}>{stat.value}</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: 12, fontWeight: 600, letterSpacing: '0.05em' }}>{stat.label.toUpperCase()}</div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 800,
+                  fontSize: stat.label === 'Total Spent' ? 16 : 32
+                }}
+              >{stat.value}
+            </div>
             </div>
           </div>
         ))}
@@ -172,12 +192,6 @@ export default function Dashboard() {
               ))}
             </div>
           </div>
-
-          {/* World Clock */}
-          <div className="card" style={{ padding: '14px 18px' }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 14, marginBottom: 12 }}>World Clock</div>
-            <WorldClock />
-          </div>
         </div>
 
         {/* Sidebar */}
@@ -207,7 +221,7 @@ export default function Dashboard() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
                     <span style={{ color: 'var(--text-muted)' }}>{b.flight.date}</span>
-                    <span style={{ color: 'var(--accent-lime)', fontWeight: 700 }}>${b.totalPrice.toLocaleString()}</span>
+                    <span style={{ color: 'var(--accent-lime)', fontWeight: 700 }}>Rp. {b.totalPrice.toLocaleString('id-ID')}</span>
                   </div>
                 </div>
               </div>

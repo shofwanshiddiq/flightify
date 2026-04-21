@@ -9,7 +9,7 @@ import { Search, Filter, ShoppingCart, Trash2, X, Check } from 'lucide-react';
 const DEFAULT_FILTERS: SearchFilters = {
   query: '',
   priceMin: 0,
-  priceMax: 5000,
+  priceMax: 77500000,
   airlines: [],
   timeOfDay: [],
   stops: 'any',
@@ -110,10 +110,10 @@ export default function FlightsPage() {
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
               <input className="input" type="number" placeholder="Min" value={filters.priceMin || ''} onChange={e => setFilters(f => ({ ...f, priceMin: +e.target.value || 0 }))} style={{ width: '50%' }} />
               <span style={{ color: 'var(--text-muted)' }}>–</span>
-              <input className="input" type="number" placeholder="Max" value={filters.priceMax || ''} onChange={e => setFilters(f => ({ ...f, priceMax: +e.target.value || 9999 }))} style={{ width: '50%' }} />
+              <input className="input" type="number" placeholder="Max" value={filters.priceMax || ''} onChange={e => setFilters(f => ({ ...f, priceMax: +e.target.value || 77500000 }))} style={{ width: '50%' }} />
             </div>
             <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
-              ${filters.priceMin} — ${filters.priceMax}
+              Rp. {filters.priceMin.toLocaleString('id-ID')} — Rp. {filters.priceMax.toLocaleString('id-ID')}
             </div>
           </div>
 
@@ -276,7 +276,7 @@ export default function FlightsPage() {
                           {item.flight.airline} · {item.passengers}x {item.class} · Seats: {item.seats.join(', ')}
                         </div>
                         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--accent-lime)' }}>
-                          ${(item.flight.price * (item.class==='economy'?1:item.class==='business'?2.5:4) * item.passengers).toFixed(0)}
+                          Rp. {((item.flight.price * (item.class==='economy'?1:item.class==='business'?2.5:4) * item.passengers)).toLocaleString('id-ID')}
                         </div>
                       </div>
                     ))
@@ -287,7 +287,7 @@ export default function FlightsPage() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
                       <span style={{ color: 'var(--text-secondary)' }}>Total</span>
                       <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'var(--accent-lime)' }}>
-                        ${basket.reduce((sum, item) => sum + Math.round(item.flight.price * (item.class==='economy'?1:item.class==='business'?2.5:4) * item.passengers), 0).toLocaleString()}
+                        Rp. {basket.reduce((sum, item) => sum + Math.round(item.flight.price * (item.class==='economy'?1:item.class==='business'?2.5:4) * item.passengers), 0).toLocaleString('id-ID')}
                       </span>
                     </div>
                     <button className="btn btn-primary" style={{ width: '100%', padding: '14px' }} onClick={handleCheckout}>
