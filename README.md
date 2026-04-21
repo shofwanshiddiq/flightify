@@ -6,6 +6,15 @@
 
 ---
 
+<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/333bf113-356a-418e-b695-510feb87cf35" />
+
+
+
+## Live Preview
+> **[flightify.vercel.app](https://flightify.vercel.app/)**
+
+---
+
 ## Features
 
 ### Dashboard
