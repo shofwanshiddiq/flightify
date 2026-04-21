@@ -1,14 +1,14 @@
 # ✈ Flightify
 
-> Your Sky, Your Journey — A premium flight booking & tracking web application.
+> Premium flight app for a traveler like you!.
 
 ![Flightify](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
 
 ---
 
-## ✨ Features
+## Features
 
-### 🏠 Dashboard
+### Dashboard
 - **Live Stats Panel** — total bookings, active flights, in-flight count, total spent
 - **Real-time Flight Ticker** — horizontal scrolling live feed of all tracked flights
 - **Animated World Map** — Mercator projection SVG map with moving plane simulations
@@ -16,9 +16,9 @@
 - **Flight Legend** — click any flight badge to switch the tracker focus instantly
 - **My Bookings Widget** — quick view of confirmed/pending bookings
 - **Recent Flights** — compact flight card list with status badges
-- **World Clock** — live clocks for New York, London, Dubai, Singapore, Sydney, Tokyo
+- **World Clock** — live clocks for across the world
 
-### 🔍 Flights (Search & Book)
+### Book a Flight
 - **Smart Search Bar** — search by city name, IATA code, or airline
 - **Advanced Filter Panel** — filter by:
   - **Price Range** (min/max)
@@ -34,7 +34,7 @@
 - **Basket / Cart** — add multiple flights, review, remove, or checkout
 - **Checkout Flow** — confirms all bookings instantly, adds to profile
 
-### 🌍 Live Tracker
+### World Map Live Tracker
 - **Full-screen World Map** — animated Mercator projection with all tracked flights
 - **Animated Planes** — each plane moves in real-time along its bezier route
 - **Click-to-Track** — click any plane on the map to select it
@@ -42,7 +42,7 @@
 - **Legend Grid** — color-coded flight badges; click any to switch tracker view
 - **Detail Panel** — shows flight number, progress bar, altitude, speed, coordinates, ETA
 
-### 👤 Profile
+### Profile
 - **User Card** — avatar, Gold Member status, loyalty miles badge
 - **Stats** — total flights, countries visited, total spent
 - **Settings Menu** — Personal Info, Payment Methods, Notifications, Security, Preferences
@@ -52,7 +52,7 @@
 
 ---
 
-## 🛠 Technical Stack
+## Technology
 
 | Technology | Version | Purpose |
 |-----------|---------|---------|
@@ -101,7 +101,7 @@ src/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -132,15 +132,3 @@ npm run preview
 
 ---
 
-## 📁 Project Structure Notes
-
-- All flight data is mocked in `src/data/flights.ts` — swap with a real API for production
-- The world map uses a hand-crafted SVG Mercator projection (no Mapbox/Leaflet dependency)
-- Plane positions are computed via quadratic Bézier interpolation in `WorldMap.tsx`
-- Basket/booking state lives in React Context and resets on page refresh (no localStorage by design)
-
----
-
-## 📄 License
-
-MIT — free to use, modify, and distribute.
